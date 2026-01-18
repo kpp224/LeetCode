@@ -1,22 +1,24 @@
 class Solution {
 public:
-    int Robber(int index, vector<int> &dp, vector<int> &nums){
-        if(index == 0)
-        return nums[0];
-
-        if(index == 1)
-        return max(nums[0],nums[1]);
-
-        if(dp[index] != -1)
-        return dp[index];
-
-        return dp[index] = max(nums[index] + Robber(index-2,dp,nums), Robber(index-1,dp,nums));
-    }
-
     int rob(vector<int>& nums) {
         int n = nums.size();
-        vector<int> dp(n,-1);
 
-        return Robber(n-1,dp,nums);
+        if(n == 1)
+        return nums[0];
+
+        if(n == 2)
+        return max(nums[0],nums[1]);
+
+        int curr;
+        int prev = max(nums[0],nums[1]);
+        int prev1 = nums[0];
+
+        for(int i = 2; i < n; i++){
+            curr = max(nums[i] + prev1, prev);
+            prev1 = prev;
+            prev = curr;
+        }
+
+        return curr;
     }
 };
