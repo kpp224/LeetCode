@@ -8,14 +8,13 @@ public:
             int j = i;
             int letters = 0;
 
-            while(j < words.size() && letters + words[j].size() + (j - i) <= maxWidth){
+            while(j < words.size() && letters + words[j].size() + (j-i) <= maxWidth){
                 letters += words[j].size();
                 j++;
             }
 
-            int gap = j - i - 1;
             int space = maxWidth - letters;
-
+            int gap = j - i - 1;
             string line = "";
 
             if(j == words.size() || gap == 0){
@@ -26,9 +25,7 @@ public:
                     }
                 }
 
-                while(line.size() < maxWidth){
-                    line += " ";
-                }
+                while(line.size() < maxWidth) line += " ";
             }
             else{
                 int eachSpace = space / gap;
@@ -43,7 +40,6 @@ public:
                             s++;
                             extraSpace--;
                         }
-
                         line += string(s, ' ');
                     }
                 }
