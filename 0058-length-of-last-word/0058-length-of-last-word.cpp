@@ -4,7 +4,7 @@ public:
         int n = s.length();
 
         int ans = 0;
-        int i = n-1;
+        int i = n - 1;
 
         while(i >= 0 && s[i] == ' '){
             i--;
