@@ -2,8 +2,8 @@ class Solution {
 public:
     int trap(vector<int>& height) {
         int n = height.size();
-        int leftMax[n];
-        int rightMax[n];
+        vector<int> leftMax(n);
+        vector<int> rightMax(n);
 
         leftMax[0] = 0;
 
@@ -23,7 +23,7 @@ public:
         for(int i = 0; i < n; i++){
             minHeight = min(leftMax[i],rightMax[i]);
             if(minHeight - height[i] > 0){
-                water += (minHeight - height[i]);
+                water += minHeight - height[i];
             }
         }
 
