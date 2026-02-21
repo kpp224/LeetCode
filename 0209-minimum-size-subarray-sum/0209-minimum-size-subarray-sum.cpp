@@ -1,11 +1,11 @@
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
+        int n = nums.size();
         int start = 0;
         int end = 0;
-        int sum = 0;
         int total_len = INT_MAX;
-        int n = nums.size();
+        int sum = 0;
 
         while(end < n){
             sum += nums[end];
@@ -18,5 +18,6 @@ public:
         }
 
         return total_len != INT_MAX ? total_len : 0;
+
     }
 };
