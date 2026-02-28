@@ -3,30 +3,32 @@ public:
     int row[8] = {0,0,-1,1,-1,-1,1,1};
     int col[8] = {-1,1,0,0,-1,1,-1,1};
 
-    bool isValid(int i, int j, int n, int m){
-        return i >= 0 && i < n && j >= 0 && j < m;
+    bool isValid(int r, int c, int rows, int cols){
+        return r >= 0 && r < rows && c >= 0 && c < cols;
     }
 
     void gameOfLife(vector<vector<int>>& board) {
-        int m = board[0].size();
-        int n = board.size();
+        int n = board[0].size();
+        int m = board.size();
 
-        // vector<vector<int>> copyBoard(m, vector<int>(n));
+        vector<vector<int>> copyBoard(m, vector<int>(n));
 
-        vector<vector<int>> copyBoard = board;
+        // vector<vector<int>> copyBoard = board;
 
-        // for(int i = 0; i < n; i++){
-        //     for(int j = 0; j < m; j++){
-        //         copyBoard[i][j] = board[i][j];
-        //     }
-        // }
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                copyBoard[i][j] = board[i][j];
+            }
+        }
 
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
                 int liveCounts = 0;
 
                 for(int k = 0; k < 8; k++){
-                    if(isValid(i+row[k],j+col[k],n,m) && copyBoard[i+row[k]][j+col[k]] == 1){
+                    int new_row = i + row[k];
+                    int new_col = j + col[k];
+                    if(isValid(new_row,new_col,m,n) && copyBoard[new_row][new_col] == 1){
                         liveCounts++;
                     }
                 }
