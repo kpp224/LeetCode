@@ -4,8 +4,8 @@ public:
         if(s.length() != t.length())
         return false;
 
-        unordered_map<char,int> mapST;
-        unordered_map<char,int> mapTS;
+        unordered_map<char,char> mapST;
+        unordered_map<char,char> mapTS;
 
         for(int i = 0; i < s.length(); i++){
             char c1 = s[i];
