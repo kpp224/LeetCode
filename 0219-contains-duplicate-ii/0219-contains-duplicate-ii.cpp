@@ -7,11 +7,11 @@ public:
             val[nums[i]].push_back(i);
         }
 
-        for(auto it = val.begin(); it != val.end(); it++){
-            for(int i = 1; i < it->second.size(); i++){
-                if(abs(it->second[i] - it->second[i - 1]) <= k){
-                    return true;
-                }
+        for(auto &it : val){
+            vector<int> &v = it.second;
+
+            for(int i = 1; i < v.size(); i++){
+                if(abs(v[i] - v[i-1] <= k)) return true;
             }
         }
 
