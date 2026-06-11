@@ -10,26 +10,23 @@ public:
             int a = nums[i];
             int target = -a;
 
-            int start = i+1, end = n-1;
+            int l = i+1;
+            int r = n-1;
 
-            while(start < end){
-                if(nums[start] + nums[end] == target){
-                    ans.push_back({nums[i],nums[start],nums[end]});
-                    while(start < end && nums[start] == nums[start+1])
-                    {
-                        start++;
+            while(l < r){
+                if(nums[l] + nums[r] == target){
+                    ans.push_back({nums[i],nums[l],nums[r]});
+                    while(l < r && nums[l+1] == nums[l]){
+                        l++;
                     }
-                    while(start < end && nums[end] == nums[end-1])
-                    {
-                        end--;
+                    while(l < r && nums[r-1] == nums[r]){
+                        r--;
                     }
-                    start++, end--;
-                }
-                else if(nums[start] + nums[end] > target){
-                    end--;
-                }
-                else{
-                    start++;
+                    l++, r--;
+                }else if(nums[l] + nums[r] > target){
+                    r--;
+                }else{
+                    l++;
                 }
             }
 
